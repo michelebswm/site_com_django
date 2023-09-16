@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Homepage Hashflix
+{% endblock %}
+
+{% block head %}
+{% load static %}
+<link	rel="stylesheet" type="text/css"	href="{% static 'css/style_homepage.css' %}"/>
+{% endblock %}
+
+{% block content %}
+<header class="header">
+	<div class="title-header">
+		Filmes e séries da Hashtag, tudo em um só lugar
+	</div>
+	<div class="paragraph">Assista onde quiser. Cancele quando quiser.</div>
+	<div class="paragraph">
+		Quer começar? Coloque seu e-mail abaixo para acessar.
+	</div>
+	<form method="POST" action="" class="form-access">
+		<input type="text" name="email" id="email" class="input-email"/>
+		<div class="btn-access">
+			<a href="#">
+        <span>Acesse</span>
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </a>
+		</div>
+	</form>
+</header>
+
+<section class="section">
+	<div class="group-txt">
+		<div class="title-sec">
+			 Enjoy on your TV.
+		</div>
+		<div class="paragraph">
+			Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray players, and more.
+		</div>
+	</div>
+	<div>
+		<img src="{% static 'images/tv.png' %}" alt="tv">
+	</div>
+</section>
+
+<section class="section">
+	<div>
+		<img src="{% static 'images/mobile-0819.jpg' %}" alt="mobile">
+	</div>
+	<div class="group-txt">
+		<div class="title-sec">
+			 Download your shows to watch offline.
+		</div>
+		<div class="paragraph">
+			 Save your favorites easily and always have something to watch.
+		</div>
+	</div>
+</section>
+
+<section class="section">
+	<div class="group-txt">
+		<div class="title-sec">
+			 Create profiles for kids.
+		</div>
+		<div class="paragraph">
+			Send kids on adventures with their favorite characters in a space made just for them—free with your membership.
+		</div>
+	</div>
+	<div>
+		<img src="{% static 'images/netflix_kid.png' %}" alt="hashflix_kid">
+	</div>
+</section>
+{% endblock %}
