@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    HomeFilmes Hashflix
+{% endblock %}
+
+{% block head %}
+{% load static %}
+<link	rel="stylesheet" type="text/css"	href="{% static 'css/style_homefilmes.css' %}"/>
+{% endblock %}
+
+{% block content %}
+<div class="content">
+  <h1>Esta é a HomeFilmes</h1>
+
+  {% for filme in object_list %}
+    <a href="{% url 'filme:detalhesfilme' filme.pk %}"><p>{{ filme.titulo }}</p></a>
+    <hr>
+    <p>{{ filme.descricao }}</p>
+    <img src="{{ filme.thumb.url }}" alt="">
+  {% endfor %}
+</div>
+
+<div class="">
+  <h2>Novo</h2>
+  {% for filme in lista_filmes_recentes %}
+    <p>{{ filme }}</p>
+  {% endfor %}
+</div>
+
+<div class="">
+  <h2>Em Alta</h2>
+  {% for filme in lista_filmes_emalta %}
+    <p>{{ filme }}</p>
+  {% endfor %}
+</div>
+
+
+{% endblock %}

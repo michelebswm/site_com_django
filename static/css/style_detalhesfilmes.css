@@ -1,0 +1,18 @@
+.content {
+	padding-top: 4.68rem; /*Ajuste isso de acordo com a altura da sua barra de navegação */
+}
+
+.films-list{
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+}
+
+.text-list{
+	text-align: center;
+}
+
+.images-list{
+	height: 10rem;
+	width: auto;
+}

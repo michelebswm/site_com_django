@@ -14,7 +14,8 @@
     - quantidade de views
     - data de criação
     - Episodios
-        - videos
+        - Relação de qual filme o Episodio pertence
+        - videos (link do vídeo)
         - titulo
 
 - Barra de Pesquisa

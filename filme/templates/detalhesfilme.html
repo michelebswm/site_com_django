@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    DetalhesFilme Hashflix
+{% endblock %}
+
+{% block head %}
+{% load static %}
+<link	rel="stylesheet" type="text/css"	href="{% static 'css/style_detalhesfilmes.css' %}"/>
+{% endblock %}
+
+{% block content %}
+<div class="content">
+  <h1>Detalhes do filme: {{ object.titulo }}</h1>
+  <p>{{ object }}<p/>
+  <p>{{ object.descricao }}</p>
+  <img src="{{ object.thumb.url }}" alt="">
+
+  <h2>Episódios</h2>
+
+  {% for episodio in object.episodios.all %}
+     <a href="{{ episodio.video }}">
+       <p>Episódio {{ forloop.counter }}: {{ episodio.titulo }}</p>
+     </a>
+  {% endfor %}
+
+  <h2>Filmes Relacionados</h2>
+  <div class="films-list">
+    {% for film_rel in filmes_relacionados %}
+      <div class="item-list">
+        <img src="{{ film_rel.thumb.url }}" alt="" class="images-list">
+        <a href="{% url 'filme:detalhesfilme' film_rel.pk %}"><p class="text-list">{{ film_rel.titulo }}</p></a>
+      </div>
+    {% endfor %}
+  </div>
+
+
+</div>
+{% endblock %}
