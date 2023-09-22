@@ -18,6 +18,15 @@ class DetalhesFilme(DetailView):
     template_name = "detalhesfilme.html"
     model = Filme
 
+    def get(self, request, *args, **kwargs):
+        # Descobrir o filme acessado, Somar 1 nas visualizações do filme e atualizar no banco
+        filme = self.get_object()
+        filme.visualizacoes += 1    # Editando o campo do banco de dados
+        filme.save()    # Salvando a atualização no banco de dados
+
+        # Redireciona o usuário para a url final
+        return super().get(request, *args, **kwargs)
+
     def get_context_data(self, **kwargs):
         # Executa primeiro a função da superClass
         context = super(DetalhesFilme, self).get_context_data(**kwargs)

@@ -1,18 +1,82 @@
 .content {
-	padding-top: 4.68rem; /*Ajuste isso de acordo com a altura da sua barra de navegação */
-}
-
-.films-list{
 	display: flex;
-	flex-direction: row;
-	gap: 1rem;
+	flex-direction: column;
 }
 
-.text-list{
+/* Inicio sec-filme */
+.sec-filme {
+	min-height: 100vh;
+	background-repeat: no-repeat;
+	background-size: cover; /* Redimensiona a imagem para caber */
+	background-color: rgba(0, 0, 0);
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+}
+
+.title-film {
+	font-family: "Roboto", sans-serif;
+	font: 3rem bold;
+	padding: 2rem 1rem;
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.description-resume {
+	padding: 1rem 1rem;
+	max-width: 30rem;
+	max-height: 5rem;
+	overflow: hidden; /* ... */
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.btn-play {
+	padding: 0.8rem;
+	margin: 1rem;
+	width: 5rem;
 	text-align: center;
+	background-color: rgba(189, 16, 16, 0.527);
+	color: rgba(255, 255, 255);
+	border-radius: 0.5rem;
+	transition: 1.02;
 }
 
-.images-list{
-	height: 10rem;
-	width: auto;
+.btn-play:hover {
+	cursor: pointer;
+	transform: scale(1.06);
+}
+
+/* Inicio sec-episodio */
+.sec-episodio {
+	min-height: 50vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+.visualizacao {
+	padding: 1rem 0rem;
+}
+
+.episod,
+.description {
+	padding: 1rem 2rem;
+}
+
+.link-epsod {
+	display: flex;
+}
+
+.text-list:hover,
+.link-epsod:hover {
+	color: rgb(243, 26, 26);
+}
+
+.sec-related {
+	padding: 2rem;
+}
+
+.subtitle {
+	font-size: 1.5em !important ;
+	padding: 1rem 0;
 }

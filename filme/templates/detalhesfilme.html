@@ -7,33 +7,65 @@
 {% block head %}
 {% load static %}
 <link	rel="stylesheet" type="text/css"	href="{% static 'css/style_detalhesfilmes.css' %}"/>
+<link	rel="stylesheet" type="text/css"	href="{% static 'css/style_carousel.css' %}"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
 <div class="content">
-  <h1>Detalhes do filme: {{ object.titulo }}</h1>
-  <p>{{ object }}<p/>
-  <p>{{ object.descricao }}</p>
-  <img src="{{ object.thumb.url }}" alt="">
+  <section class="sec-filme" style="background-image: url('{{ object.thumb.url }}');">
+    <div class="title-film">
+      {{ object.titulo }}
+    </div>
+    <div class="description-resume">
+      {{ object.descricao }}
+    </div>
+    <div class="btn-play">
+      <a href="{{ object.episodios.first.video }}">Play</a>
+    </div>
+    <!-- <img src="{{ object.thumb.url }}" alt=""> -->
+  </section>
 
-  <h2>Episódios</h2>
+  <section class="sec-episodio">
+    <div class="description">
+      <div class="subtitle">Descrição</div>
+      <p>{{ object.descricao }}</p>
+      <p class="visualizacao">Visualizações: {{ object.visualizacoes }}</p>
+    </div>
+    <div class="episod">
 
-  {% for episodio in object.episodios.all %}
-     <a href="{{ episodio.video }}">
-       <p>Episódio {{ forloop.counter }}: {{ episodio.titulo }}</p>
-     </a>
-  {% endfor %}
+      <div class="subtitle">Episódios</div>
+      {% for episodio in object.episodios.all %}
+         <a href="{{ episodio.video }}" class="link-epsod">
+            Episódio {{ forloop.counter }}: {{ episodio.titulo }}
+         </a>
+      {% endfor %}
+    </div>
+  </section>
 
-  <h2>Filmes Relacionados</h2>
-  <div class="films-list">
-    {% for film_rel in filmes_relacionados %}
-      <div class="item-list">
-        <img src="{{ film_rel.thumb.url }}" alt="" class="images-list">
-        <a href="{% url 'filme:detalhesfilme' film_rel.pk %}"><p class="text-list">{{ film_rel.titulo }}</p></a>
-      </div>
-    {% endfor %}
-  </div>
-
-
+  <section class="sec-related">
+    <div class="subtitle">Filmes Relacionados</div>
+    <div class="container">
+  			<button class="arrow-left control" aria-label="Previous image">
+  				◄
+  			</button>
+  			<button class="arrow-right control" aria-label="Next image">
+  				►
+  			</button>
+  			<div class="gallery-wrapper">
+  				<div class="gallery">
+            {% for film_rel in filmes_relacionados %}
+              <a href="{% url 'filme:detalhesfilme' film_rel.pk %}">
+                <img src="{{ film_rel.thumb.url }}" alt="" class="item">
+                <p class="text-list">{{ film_rel.titulo }}</p>
+              </a>
+            {% endfor %}
+  				</div>
+  			</div>
+  		</div>
+  </section>
 </div>
+<script src="{% static 'js/carousel.js'%}" charset="utf-8"></script>
 {% endblock %}

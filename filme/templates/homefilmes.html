@@ -7,33 +7,78 @@
 {% block head %}
 {% load static %}
 <link	rel="stylesheet" type="text/css"	href="{% static 'css/style_homefilmes.css' %}"/>
+<link	rel="stylesheet" type="text/css"	href="{% static 'css/style_carousel.css' %}"/>
 {% endblock %}
 
 {% block content %}
 <div class="content">
   <h1>Esta é a HomeFilmes</h1>
 
-  {% for filme in object_list %}
+  <!-- {% for filme in object_list %}
     <a href="{% url 'filme:detalhesfilme' filme.pk %}"><p>{{ filme.titulo }}</p></a>
     <hr>
     <p>{{ filme.descricao }}</p>
     <img src="{{ filme.thumb.url }}" alt="">
-  {% endfor %}
-</div>
+  {% endfor %} -->
 
-<div class="">
-  <h2>Novo</h2>
-  {% for filme in lista_filmes_recentes %}
-    <p>{{ filme }}</p>
-  {% endfor %}
-</div>
+  <section class="sec-filme" style="background-image: url('{{ object.thumb.url }}');">
+    <div class="title-film">
+      {{ object.titulo }}
+    </div>
+    <div class="description-resume">
+      {{ object.descricao }}
+    </div>
+    <div class="btn-play">
+      <a href="{{ object.episodios.first.video }}">Play</a>
+    </div>
+    <!-- <img src="{{ object.thumb.url }}" alt=""> -->
+  </section>
 
-<div class="">
-  <h2>Em Alta</h2>
-  {% for filme in lista_filmes_emalta %}
-    <p>{{ filme }}</p>
-  {% endfor %}
-</div>
 
+  <section class="sec-novo">
+    <div class="subtitle">Novo</div>
+    <div class="container">
+        <button class="arrow-left control" aria-label="Previous image">
+          ◄
+        </button>
+        <button class="arrow-right control" aria-label="Next image">
+          ►
+        </button>
+        <div class="gallery-wrapper">
+          <div class="gallery">
+            {% for filme in lista_filmes_recentes %}
+              <a href="{% url 'filme:detalhesfilme' filme.pk %}">
+                <img src="{{ filme.thumb.url }}" alt="" class="item">
+                <p class="text-list">{{ filme.titulo }}</p>
+              </a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <section class="sec-emalta">
+    <div class="subtitle">Em Alta</div>
+    <div class="container">
+        <button class="arrow-left2 control2" aria-label="Previous image">
+          ◄
+        </button>
+        <button class="arrow-right control2" aria-label="Next image">
+          ►
+        </button>
+        <div class="gallery-wrapper">
+          <div class="gallery">
+            {% for filme in lista_filmes_emalta %}
+              <a href="{% url 'filme:detalhesfilme' filme.pk %}">
+                <img src="{{ filme.thumb.url }}" alt="" class="item2">
+                <p class="text-list">{{ filme.titulo }}</p>
+              </a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+  </section>
+</div>
+<script src="{% static 'js/carousel.js'%}" charset="utf-8"></script>
 
 {% endblock %}
