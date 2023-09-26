@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Pesquisa de Filmes
+{% endblock %}
+
+{% block head %}
+{% load static %}
+<link	rel="stylesheet" type="text/css"	href="{% static 'css/style_pesquisa.css' %}"/>
+{% endblock %}
+
+{% block content %}
+<div class="content">
+  <h2>Resultados da busca</h2>
+  <div class="search">
+    {% for filme in object_list %}
+    <div class="search-item">
+      <a href="{% url 'filme:detalhesfilme' filme.pk %}">
+        <img src="{{ filme.thumb.url }}" alt="" class="item">
+        <p class="text-list">{{ filme.titulo }}</p>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

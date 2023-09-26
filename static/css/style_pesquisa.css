@@ -1,0 +1,22 @@
+.content{
+  	padding-top: 4.68rem;
+    min-height: 100vh;
+}
+
+.search{
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1rem;
+}
+
+.search-item{
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+	height: 15rem;
+	width: auto;
+	flex-shrink: 0; /* Para não diminuir para caber*/
+	opacity: 0.6;
+}

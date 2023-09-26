@@ -6,9 +6,10 @@
         </a>
     </div>
     <div class="group-nav">
-        <div class="nav-search">
-            <input type="search" name="search" id="search" placeholder="Pesquisar...">
-        </div>
+        <form method="get" action="{% url 'filme:pesquisafilme' %}" class="nav-search">
+          <input type="search" name="query" id="search" value="{{ request.GET.query }}" placeholder="Pesquisar...">
+          <input type="submit" value="" class="nav-submit">
+        </form>
         <div class="nav-btn">
             <a href="#">Sair</a>
         </div>

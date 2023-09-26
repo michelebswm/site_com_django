@@ -1,5 +1,6 @@
 .content {
-	padding-top: 4.68rem; /*Ajuste isso de acordo com a altura da sua barra de navegação */
+	display: flex;
+	flex-direction: column;
 }
 
 /* Inicio sec-filme */
@@ -24,6 +25,7 @@
 	padding: 1rem 1rem;
 	max-width: 30rem;
 	max-height: 5rem;
+	background-color: rgba(0, 0, 0, 0.4);
 	overflow: hidden; /* ... */
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -34,7 +36,7 @@
 	margin: 1rem;
 	width: 5rem;
 	text-align: center;
-	background-color: rgba(189, 16, 16, 0.527);
+	background-color: rgba(189, 16, 16);
 	color: rgba(255, 255, 255);
 	border-radius: 0.5rem;
 	transition: 1.02;
@@ -46,6 +48,7 @@
 }
 
 /* Outras sections */
+.sec-assistidos,
 .sec-novo,
 .sec-emalta {
 	padding: 2rem;

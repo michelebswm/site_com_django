@@ -15,6 +15,7 @@
 	gap: 0.5rem;
 }
 
+.arrow-left3,
 .arrow-left2,
 .arrow-left,
 .arrow-right {
@@ -45,12 +46,14 @@
 	);
 }
 
+.arrow-left3:hover,
 .arrow-left2:hover,
 .arrow-right:hover,
 .arrow-left:hover {
 	opacity: 1;
 }
 
+.item3,
 .item2,
 .item {
 	height: 15rem;
@@ -60,6 +63,7 @@
 	transition: all 200ms ease-in-out;
 }
 
+.current-item3,
 .current-item2,
 .current-item {
 	opacity: 1;

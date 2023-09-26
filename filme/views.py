@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Filme
 from django.views.generic import TemplateView, ListView, DetailView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 
@@ -9,21 +10,21 @@ class Homepage(TemplateView):
     template_name = 'homepage.html'
 
 
-class HomeFilmes(ListView):
+class HomeFilmes(LoginRequiredMixin, ListView):
     template_name = "homefilmes.html"
     model = Filme
 
 
-class DetalhesFilme(DetailView):
+class DetalhesFilme(LoginRequiredMixin, DetailView):
     template_name = "detalhesfilme.html"
     model = Filme
 
     def get(self, request, *args, **kwargs):
-        # Descobrir o filme acessado, Somar 1 nas visualizações do filme e atualizar no banco
         filme = self.get_object()
-        filme.visualizacoes += 1    # Editando o campo do banco de dados
-        filme.save()    # Salvando a atualização no banco de dados
-
+        filme.visualizacoes += 1
+        filme.save()
+        usuario = request.user      # current user
+        usuario.filmes_vistos.add(filme)  # .add para adicionar no banco
         # Redireciona o usuário para a url final
         return super().get(request, *args, **kwargs)
 
@@ -35,6 +36,24 @@ class DetalhesFilme(DetailView):
             categoria=self.get_object().categoria)
         context['filmes_relacionados'] = filmes_relacionados
         return context
+
+
+class PesquisaFilme(LoginRequiredMixin, ListView):
+    template_name = "pesquisa.html"
+    model = Filme
+
+    # Alterando o object_list
+
+    def get_queryset(self):
+        # Quando for feita uma pesquisa quero pegar o termo digitado
+        termo_pesquisa = self.request.GET.get(
+            'query')  # é o name do input da pesquisa
+        if termo_pesquisa:
+            object_list = self.model.objects.filter(
+                titulo__icontains=termo_pesquisa)
+            return object_list
+        else:
+            return None
 
 # def homepage(request):
 #     return render(request, "homepage.html")

@@ -1,15 +1,16 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import AbstractUser
+
 
 LISTA_CATEGORIAS = (
     ('ANALISES', 'Análises'),
     ('PROGRAMACAO', 'Programação'),
     ('APRESENTACAO', 'Apresentação'),
     ('OUTROS', 'Outros'),
-    {'ANIMES', 'Animes'}
+    {'ANIMES', 'Animes'},
+    ['FILME_A', 'Filme de Ação'],
 )
-
-# Create o film
 
 
 class Filme(models.Model):
@@ -26,8 +27,6 @@ class Filme(models.Model):
     def __str__(self):
         return self.titulo
 
-# Criar os episódios
-
 
 class Episodio(models.Model):
     # parametos do ForeignKey, "nome_da_tabela", related_name relaciona os episodios ao filme, on_delete se deletar o filme os episodios também sao deletados
@@ -39,4 +38,6 @@ class Episodio(models.Model):
     def __str__(self):
         return self.filme.titulo + ' - ' + self.titulo
 
-# Criar o usuário
+
+class Usuario(AbstractUser):
+    filmes_vistos = models.ManyToManyField('Filme')

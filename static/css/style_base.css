@@ -15,15 +15,15 @@ a {
 	color: #f5f4f1;
 	font-family: "Poppins", sans-serif;
 }
-
+/* Style navbar */
 .navbar {
 	position: fixed;
 	padding: 1rem;
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
 	background-color: transparent;
+	align-items: center;
 	z-index: 50;
 }
 
@@ -66,4 +66,14 @@ input[type="search"] {
 	border-radius: 0.4rem;
 	padding: 0rem 0.3rem;
 	color: rgb(15, 15, 15);
+}
+
+
+.nav-submit,
+.invisible {
+	display: none;
+}
+
+.navbar-bg {
+	background-color: rgb(0, 0, 0, 0.95);
 }

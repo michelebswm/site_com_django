@@ -12,24 +12,15 @@
 
 {% block content %}
 <div class="content">
-  <h1>Esta é a HomeFilmes</h1>
-
-  <!-- {% for filme in object_list %}
-    <a href="{% url 'filme:detalhesfilme' filme.pk %}"><p>{{ filme.titulo }}</p></a>
-    <hr>
-    <p>{{ filme.descricao }}</p>
-    <img src="{{ filme.thumb.url }}" alt="">
-  {% endfor %} -->
-
-  <section class="sec-filme" style="background-image: url('{{ object.thumb.url }}');">
+  <section class="sec-filme" style="background-image: url('{{ filme_destaque.thumb.url }}');">
     <div class="title-film">
-      {{ object.titulo }}
+      {{ filme_destaque.titulo }}
     </div>
     <div class="description-resume">
-      {{ object.descricao }}
+      {{ filme_destaque.descricao }}
     </div>
     <div class="btn-play">
-      <a href="{{ object.episodios.first.video }}">Play</a>
+      <a href="{% url 'filme:detalhesfilme' filme_destaque.pk %}">Play</a>
     </div>
     <!-- <img src="{{ object.thumb.url }}" alt=""> -->
   </section>
@@ -77,6 +68,28 @@
           </div>
         </div>
       </div>
+  </section>
+
+  <section class="sec-assistidos">
+    <div class="subtitle">Filmes Vistos</div>
+    <div class="container">
+        <button class="arrow-left3 control3" aria-label="Previous image">
+          ◄
+        </button>
+        <button class="arrow-right control3" aria-label="Next image">
+          ►
+        </button>
+        <div class="gallery-wrapper">
+          <div class="gallery">
+            {% for filme in request.user.filmes_vistos.all %}
+              <a href="{% url 'filme:detalhesfilme' filme.pk %}">
+                <img src="{{ filme.thumb.url }}" alt="" class="item3">
+                <p class="text-list">{{ filme.titulo }}</p>
+              </a>
+            {% endfor %}
+          </div>
+        </div>
+    </div>
   </section>
 </div>
 <script src="{% static 'js/carousel.js'%}" charset="utf-8"></script>
