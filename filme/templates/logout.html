@@ -11,6 +11,24 @@
 
 {% block content %}
 <div class="content">
-  <h2>Logout</h2>
+  <header class="header">
+  	<div class="title-header">
+  		Logout realizado com sucesso.
+  	</div>
+    <div class="group-btn">
+      <div class="btn-access">
+        <a href="{% url 'filme:login' %}">
+          Fazer Login
+        </a>
+      </div>
+      <div class="btn-access">
+        <a href="{% url 'filme:criarconta' %}">
+          Criar uma Conta
+        </a>
+      </div>
+    </div>
+
+  </header>
+
 </div>
 {% endblock %}

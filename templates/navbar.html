@@ -5,16 +5,28 @@
             <img src="{% static 'images/hashflix.png' %}" alt="logo-hashflix">
         </a>
     </div>
+
     <div class="group-nav">
+      {% if user.is_authenticated %}
         <form method="get" action="{% url 'filme:pesquisafilme' %}" class="nav-search">
           <input type="search" name="query" id="search" value="{{ request.GET.query }}" placeholder="Pesquisar...">
           <input type="submit" value="" class="nav-submit">
         </form>
+      {% endif %}
+      {% if user.is_authenticated %}
         <div class="nav-btn">
-            <a href="#">Sair</a>
+            <a href="{% url 'filme:logout' %}">Sair</a>
         </div>
+      {% else %}
+      <div class="nav-btn">
+          <a href="{% url 'filme:login' %}">Login</a>
+      </div>
+      {% endif %}
+      {% if user.is_authenticated %}
         <div class="nav-btn">
-            <a href="#">Editar Perfil</a>
+            <a href="{% url 'filme:editarperfil' %}">Editar Perfil</a>
         </div>
+      {% endif %}
     </div>
+
 </nav>
