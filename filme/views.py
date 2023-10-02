@@ -1,13 +1,16 @@
-from django.shortcuts import render, redirect
-from .models import Filme
-from django.views.generic import TemplateView, ListView, DetailView
+from django.shortcuts import render, redirect, reverse
+from .models import Filme, Usuario
+from django.views.generic import TemplateView, ListView, DetailView, FormView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import LoginView
+from .forms import CustomLoginForm, CriarContaForm, FormHomepage
 
 # Create your views here.
 
 
-class Homepage(TemplateView):
+class Homepage(FormView):
     template_name = 'homepage.html'
+    form_class = FormHomepage
 
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
@@ -16,6 +19,15 @@ class Homepage(TemplateView):
         else:
             # Redireciona para a url final da view neste caso a homepage
             return super().get(request, *args, **kwargs)
+
+    def get_success_url(self):
+        email = self.request.POST.get("email")
+        usuarios = Usuario.objects.filter(email=email)
+        if usuarios:
+            return reverse('filme:login')
+        else:
+            return reverse('filme:criarconta')
+        # print(self.request.POST)
 
 
 class HomeFilmes(LoginRequiredMixin, ListView):
@@ -68,5 +80,21 @@ class EditarPerfil(LoginRequiredMixin, TemplateView):
     template_name = 'editarperfil.html'
 
 
-class CriarConta(TemplateView):
+class CriarConta(FormView):
     template_name = 'criarconta.html'
+    form_class = CriarContaForm
+
+    # Verifica se todos os campos do formulário foram preenchido corretamente e salva no banco de dados
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
+
+    # Se a validação for bem sucedida tem que redirecionar para um link
+
+    def get_success_url(self):
+        return reverse('filme:login')  # Retorna o texto do link
+
+
+class CustomLoginView(LoginView):
+    template_name = 'login.html'
+    form_class = CustomLoginForm

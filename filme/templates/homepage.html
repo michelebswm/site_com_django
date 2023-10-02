@@ -19,13 +19,22 @@
 		Quer começar? Coloque seu e-mail abaixo para acessar.
 	</div>
 	<form method="POST" action="" class="form-access">
-		<input type="text" name="email" id="email" class="input-email"/>
-		<div class="btn-access">
-			<a href="#">
+    {% csrf_token %}
+    {% if form.email.errors %}
+    <input type="text" class="input-email is-invalid" name="{{ form.email.name }}"  placeholder="E-mail"/>
+    <div class="invalid-feedback">
+      {% for erro in form.email.errors %}
+        {{ erro }}
+      {% endfor %}
+    </div>
+
+    {% else %}
+		<input type="text" class="input-email" name="{{ form.email.name }}"  placeholder="E-mail"/>
+    {% endif %}
+		<button type="submit" class="btn-access">
         <span>Acesse</span>
         <ion-icon name="chevron-forward-outline"></ion-icon>
-      </a>
-		</div>
+		</button>
 	</form>
 </header>
 

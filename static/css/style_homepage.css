@@ -40,6 +40,7 @@
 
 .form-access {
 	display: flex;
+	flex-direction: column;
 	gap: 0.3rem;
 	justify-content: center;
 	align-items: center;
@@ -47,6 +48,8 @@
 .btn-access {
 	background-color: rgb(255, 0, 0);
 	padding: 0.55rem;
+	color: #fff;
+	border-color: rgb(255, 0, 0);
 }
 
 .input-email {
@@ -68,4 +71,14 @@
 	color: rgb(255, 255, 255);
 	font: 3rem bold;
 	padding: 0.8rem;
+}
+
+.is-invalid {
+	border: 1px solid rgb(255, 0, 0) !important;
+}
+
+.invalid-feedback {
+	outline: none;
+	font-size: 0.8rem;
+	color: rgb(255, 0, 0);
 }

@@ -11,7 +11,60 @@
 
 {% block content %}
 <div class="content">
-  <h2>Criar Conta</h2>
+  <header class="header">
+    <div class="content-form">
+      <div class="title-form">
+        Criação de Conta
+      </div>
+
+      <form method="post" class="form-criarconta">
+        {% csrf_token %}
+        <div class="form-group">
+          <input type="text" name="{{ form.username.name }}" placeholder="Username (Email)" required>
+          <small>{{form.username.help_text }}</small>
+        </div>
+        <div class="form-group">
+          {% if form.email.errors %}
+          <input type="text" class="is-invalid" name="{{ form.email.name }}" placeholder="Email" required>
+            <div class="invalid-feedback">
+              {% for erro in form.email.errors %}
+                {{ erro }}
+              {% endfor %}
+            </div>
+          {% else %}
+            <input type="text" name="{{ form.email.name }}" placeholder="Email" required>
+          {% endif %}
+          <small>{{form.email.help_text }}</small>
+        </div>
+        <div class="form-group">
+            <input type="password" name="{{ form.password1.name }}" placeholder="Senha" required>
+            <small>{{form.password1.help_text }}</small>
+        </div>
+        <div class="form-group">
+            {% if form.password2.errors %}
+              <input type="password" class="is-invalid" name="{{ form.password2.name }}" placeholder="Confirmação de Senha" required>
+                <div class="invalid-feedback">
+                  {% for erro in form.password2.errors %}
+                    {{ erro }}
+                  {% endfor %}
+                </div>
+            {% else %}
+              <input type="password" name="{{ form.password2.name }}" placeholder="Confirmação de Senha" required>
+              <small>{{form.password2.help_text }}</small>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+          <button type="submit" name="button">
+            <a href="{% url 'filme:login' %}">
+              Finalizar Cadastro
+            </a>
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </header>
 
 </div>
 {% endblock %}
