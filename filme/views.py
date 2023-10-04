@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, reverse
 from .models import Filme, Usuario
 from django.views.generic import TemplateView, ListView, DetailView, FormView, UpdateView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.views import LoginView
 from .forms import CustomLoginForm, CriarContaForm, FormHomepage
 
@@ -76,11 +76,16 @@ class PesquisaFilme(LoginRequiredMixin, ListView):
             return None
 
 
-class EditarPerfil(LoginRequiredMixin, UpdateView):
+class EditarPerfil(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     template_name = 'editarperfil.html'
     model = Usuario
     # Irá criar um form com os fields definidos na lista
     fields = ['first_name', 'last_name', 'email']
+
+    # Validação do usuário on link
+    def test_func(self):
+        user = self.get_object()
+        return self.request.user == user
 
     # Assim que editar será redirecionado para homefilmes
     def get_success_url(self):
