@@ -15,7 +15,7 @@ class CustomLoginForm(AuthenticationForm):
     def clean_username(self):
         username = self.cleaned_data.get('username')
         # Exemplo de validação simples de formato de email:
-        if not username.endswith('@'):
+        if '@' not in username:
             raise forms.ValidationError(
                 'Este campo deve ser um email válido.')
         return username

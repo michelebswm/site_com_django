@@ -24,7 +24,7 @@
       {% endif %}
       {% if user.is_authenticated %}
         <div class="nav-btn">
-            <a href="{% url 'filme:editarperfil' %}">Editar Perfil</a>
+            <a href="{% url 'filme:editarperfil' user.pk %}">Editar Perfil</a>
         </div>
       {% endif %}
     </div>

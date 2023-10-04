@@ -1,4 +1,103 @@
-.content{
-  	padding-top: 4.68rem;
-    min-height: 100vh;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto:wght@500&display=swap");
+
+.header {
+	min-height: 100vh;
+	position: relative; /* Adicione uma posição relativa para que possamos posicionar o pseudo-elemento */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.header::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url("../images/background_netflix.jpg");
+	background-repeat: no-repeat;
+	background-blend-mode: overlay;
+	background-size: cover; /* Ajuste para cobrir todo o cabeçalho */
+	background-color: rgb(0, 0, 0, 0.7);
+	opacity: 0.7; /* Opacidade para a imagem de fundo */
+	z-index: -1; /* Coloque o pseudo-elemento atrás do conteúdo */
+}
+
+.content-form {
+	width: 30rem;
+	height: auto;
+	background-color: rgb(0, 0, 0, 0.5);
+	display: flex;
+	flex-direction: column;
+}
+
+.form-editarperfil {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 2rem 4rem;
+	gap: 1rem;
+}
+
+.title-form {
+	font-family: "Montserrat", sans-serif;
+	color: rgb(255, 255, 255);
+	font: 2rem bold;
+	padding-left: 4.5rem;
+	padding-top: 2rem;
+}
+
+.form-editarperfil input {
+	height: 3rem;
+	padding-left: 0.8rem;
+	border-radius: 0.3rem;
+	outline: none;
+	border: 1px rgb(204, 204, 204);
+	background-color: #313235;
+	color: hsl(0, 0%, 100%);
+}
+
+.form-editarperfil button {
+	height: 3rem;
+	border-radius: 0.3rem;
+	outline: none;
+  margin: auto;
+	width: 90%;
+	background-color: rgb(255, 0, 0);
+	border: transparent;
+	color: hsl(0, 0%, 100%);
+	text-align: center;
+	font-weight: bold;
+	transition: background-color -3s ease;
+}
+
+.form-editarperfil button:hover {
+	background-color: rgb(189, 8, 8);
+	cursor: pointer;
+}
+
+.form-editarperfil small {
+  text-align: center;
+}
+
+.form-editarperfil ul {
+  list-style-type: none; /* Retira o simbolo da lista */
+}
+
+.form-group {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.is-invalid {
+	border: 1px solid rgb(255, 0, 0) !important;
+}
+
+.invalid-feedback {
+	outline: none;
+	font-size: 0.8rem;
+	color: rgb(255, 0, 0);
 }

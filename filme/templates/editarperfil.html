@@ -11,7 +11,69 @@
 
 {% block content %}
 <div class="content">
-  <h2>Edição do Perfil</h2>
+  <header class="header">
+    <div class="content-form">
+      <div class="title-form">
+        Edição de Perfil <p>{{ user.username }}</p>
+      </div>
+
+      <form method="post" class="form-editarperfil">
+        {% csrf_token %}
+
+        {% if 'editarperfil' in request.path %}
+          <div class="form-group">
+            <input type="text" name="{{ form.first_name.name }}" value="{{ user.first_name }}" placeholder="Primeiro Nome">
+          </div>
+          <div class="form-group">
+            <input type="text" name="{{ form.last_name.name }}" value="{{ user.last_name }}" placeholder="Sobrenome">
+          </div>
+          <div class="form-group">
+            <input type="text" name="{{ form.email.name }}" value="{{ user.email }}" placeholder="Email">
+          </div>
+
+        {% else %}
+        <div class="form-group">
+          {% if form.old_password.errors %}
+            <input type="password" class="is-invalid" name="{{ form.old_password.name }}" value="{{ user.old_password }}" placeholder="Senha antiga" required>
+            <div class="invalid-feedback">
+              {% for erro in form.old_password.errors %}
+                {{ erro }}
+              {% endfor %}
+            </div>
+          {% else %}
+            <input type="password" name="{{ form.old_password.name }}" value="{{ user.old_password }}" placeholder="Senha antiga" required>
+          {% endif %}
+        </div>
+        <div class="form-group">
+          <input type="password" name="{{ form.new_password1.name }}" value="{{ user.new_password1 }}" placeholder="Nova senha" required>
+          <small>{{ form.new_password1.help_text }}</small>
+        </div>
+        <div class="form-group">
+          {% if form.new_password2.errors %}
+              <input type="password" class="is-invalid" name="{{ form.new_password2.name }}" value="{{ user.new_password2 }}" placeholder="Confirmação da nova senha" required>
+              <div class="invalid-feedback">
+                {% for erro in form.new_password2.errors %}
+                  {{ erro }}
+                {% endfor %}
+              </div>
+          {% else %}
+            <input type="password" name="{{ form.new_password2.name }}" value="{{ user.new_password2 }}" placeholder="Confirmação da nova senha" required>
+          {% endif %}
+        </div>
+        {% endif %}
+
+        {% if 'editarperfil' in request.path %}
+          <small><a href="{% url 'filme:alterarsenha' %}">Quer mudar sua senha?</a></small>
+        {% endif %}
+        <div class="form-group">
+          <button type="submit" name="button">
+              Finalizar Edição
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </header>
 
 </div>
 {% endblock %}
