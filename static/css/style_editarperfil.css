@@ -37,7 +37,6 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	padding: 2rem 4rem;
 	gap: 1rem;
 }
 
@@ -45,8 +44,12 @@
 	font-family: "Montserrat", sans-serif;
 	color: rgb(255, 255, 255);
 	font: 2rem bold;
-	padding-left: 4.5rem;
-	padding-top: 2rem;
+	margin: auto;
+	padding-block: 2rem;
+}
+
+.form-group{
+	padding-inline: 1rem;
 }
 
 .form-editarperfil input {
@@ -54,9 +57,13 @@
 	padding-left: 0.8rem;
 	border-radius: 0.3rem;
 	outline: none;
+	width: 90%;
+	margin: auto;
 	border: 1px rgb(204, 204, 204);
 	background-color: #313235;
 	color: hsl(0, 0%, 100%);
+	flex-grow: 1;
+	flex-basis: auto;
 }
 
 .form-editarperfil button {
@@ -100,4 +107,10 @@
 	outline: none;
 	font-size: 0.8rem;
 	color: rgb(255, 0, 0);
+}
+
+@media (max-width: 501px) {
+	.content-form {
+		width: 95%;
+	}
 }

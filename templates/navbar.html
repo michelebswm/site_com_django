@@ -6,6 +6,8 @@
         </a>
     </div>
 
+    <button class="hamburger"></button>
+
     <div class="group-nav">
       {% if user.is_authenticated %}
         <form method="get" action="{% url 'filme:pesquisafilme' %}" class="nav-search">
@@ -15,7 +17,7 @@
       {% endif %}
       {% if user.is_authenticated %}
         <div class="nav-btn">
-            <a href="{% url 'filme:logout' %}">Sair</a>
+            <a href="{% url 'filme:logout' %}" id="exit-text">Sair</a>
         </div>
       {% else %}
       <div class="nav-btn">

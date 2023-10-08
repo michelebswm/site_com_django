@@ -37,6 +37,7 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	flex-wrap: wrap;
 	padding: 2rem 4rem;
 	gap: 1rem;
 }
@@ -45,7 +46,7 @@
 	font-family: "Montserrat", sans-serif;
 	color: rgb(255, 255, 255);
 	font: 2rem bold;
-	padding-left: 4.9rem;
+	margin: auto;
 	padding-top: 2rem;
 }
 
@@ -63,6 +64,7 @@
 	height: 3rem;
 	border-radius: 0.3rem;
 	outline: none;
+	margin: auto;
 	width: 90%;
 	background-color: rgb(255, 0, 0);
 	border: transparent;
@@ -75,9 +77,6 @@
 .form-criarconta button:hover {
 	background-color: rgb(189, 8, 8);
 	cursor: pointer;
-}
-
-.form-criarconta small {
 }
 
 .form-criarconta ul {
@@ -99,4 +98,19 @@
 	outline: none;
 	font-size: 0.8rem;
 	color: rgb(255, 0, 0);
+}
+
+@media (max-width: 501px) {
+	.content-form {
+		width: 95%;
+	}
+
+	.form-criarconta {
+		padding-inline:1rem;
+	}
+
+	.form-criarconta small{
+		text-align: center;
+		font-size: 0.8rem;
+	}
 }

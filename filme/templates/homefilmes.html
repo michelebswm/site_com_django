@@ -70,27 +70,29 @@
       </div>
   </section>
 
-  <section class="sec-assistidos">
-    <div class="subtitle">Filmes Vistos</div>
-    <div class="container">
-        <button class="arrow-left3 control3" aria-label="Previous image">
-          ◄
-        </button>
-        <button class="arrow-right control3" aria-label="Next image">
-          ►
-        </button>
-        <div class="gallery-wrapper">
-          <div class="gallery">
-            {% for filme in request.user.filmes_vistos.all %}
-              <a href="{% url 'filme:detalhesfilme' filme.pk %}">
-                <img src="{{ filme.thumb.url }}" alt="" class="item3">
-                <p class="text-list">{{ filme.titulo }}</p>
-              </a>
-            {% endfor %}
+  {% if request.user.filmes_vistos.all %}
+    <section class="sec-assistidos">
+      <div class="subtitle">Filmes Vistos</div>
+      <div class="container">
+          <button class="arrow-left3 control3" aria-label="Previous image">
+            ◄
+          </button>
+          <button class="arrow-right control3" aria-label="Next image">
+            ►
+          </button>
+          <div class="gallery-wrapper">
+            <div class="gallery">
+              {% for filme in request.user.filmes_vistos.all %}
+                <a href="{% url 'filme:detalhesfilme' filme.pk %}">
+                  <img src="{{ filme.thumb.url }}" alt="" class="item3">
+                  <p class="text-list">{{ filme.titulo }}</p>
+                </a>
+              {% endfor %}
+            </div>
           </div>
-        </div>
-    </div>
-  </section>
+      </div>
+    </section>
+  {% endif %}
 </div>
 <script src="{% static 'js/carousel.js'%}" charset="utf-8"></script>
 

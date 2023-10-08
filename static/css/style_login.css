@@ -55,6 +55,7 @@
 	border-radius: 0.3rem;
 	outline: none;
 	width: 90%;
+	margin: auto;
 	border: 1px rgb(204, 204, 204);
 	background-color: #313235;
 	color: hsl(0, 0%, 100%);
@@ -64,6 +65,7 @@
 	height: 3rem;
 	border-radius: 0.3rem;
 	outline: none;
+	margin: auto;
 	width: 90%;
 	background-color: rgb(255, 0, 0);
 	border: transparent;
@@ -106,4 +108,26 @@
 	outline: none;
 	font-size: 0.8rem;
 	color: rgb(255, 0, 0);
+}
+
+@media (max-width: 501px) {
+	.content-form {
+		width: 95%;
+	}
+	.form-login small{
+		text-align: center;
+		font-size: 0.8rem;
+	}
+}
+
+@media (max-width: 381px) {
+	.form-login {
+		padding: 2rem;
+	}
+	.form-login input{
+		width: 100%;
+	}
+	.form-login button{
+		width: 100%;
+	}
 }
