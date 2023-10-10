@@ -1,1 +1,1 @@
-web: python manage.py migrate && gunicorn hashflix.wsgi --log-file -
+web: sh -c "python manage.py migrate && gunicorn hashflix.wsgi --log-file -"
