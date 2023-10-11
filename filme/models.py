@@ -40,4 +40,4 @@ class Episodio(models.Model):
 
 
 class Usuario(AbstractUser):
-    filmes_vistos = models.ManyToManyField('Filme')
+    filmes_vistos = models.ManyToManyField("Filme")
