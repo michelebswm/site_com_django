@@ -1,3 +1,172 @@
-.full {
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	text-decoration: none;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.body {
 	background-color: #000;
+	color: #f5f4f1;
+	font-family: "Poppins", sans-serif;
+}
+/* Style navbar */
+.navbar {
+	position: fixed;
+	padding: 1rem;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	background-color: transparent;
+	align-items: center;
+	z-index: 50;
+}
+
+.group-nav {
+	display: flex;
+	align-items: center;
+}
+
+.nav-btn {
+	padding: 0.1rem 0.4rem;
+	border: 1px solid rgb(255, 0, 0);
+	border-radius: 0.3rem;
+	margin: 0.3rem;
+	background-color: rgb(255, 0, 0);
+	transition: 1.02s;
+	color: #f5f4f1;
+}
+
+.nav-btn:hover {
+	animation: pulse 1s infinite;
+}
+@keyframes pulse {
+	0% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.2);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+
+.nav-search {
+	padding: 0.5rem;
+}
+
+input[type="search"] {
+	height: 1.5rem;
+	border-radius: 0.4rem;
+	padding: 0rem 0.3rem;
+	color: rgb(15, 15, 15);
+}
+
+
+.nav-submit,
+.invisible {
+	display: none;
+}
+
+.navbar-bg {
+	background-color: rgb(0, 0, 0, 0.95);
+}
+
+.hamburger{
+	display: none;
+}
+
+.hamburger {
+	display: none;
+	border: none;
+	background: none;
+	border-top: 3px solid #fff; /* Cria o primeiro traço do menu hamburger */
+	cursor: pointer;
+}
+/* Criando os outros 2 traços do menu hamburger */
+.hamburger::after,
+.hamburger::before {
+	content: " ";
+	display: block;
+	width: 30px;
+	height: 3px;
+	background: #fff;
+	margin-top: 5px;
+	position: relative;
+	transition: 0.3s;
+}
+
+@media (max-width: 600px) {
+
+	.hamburger {
+		display: block;
+		z-index: 1; /* Para ficar acima */
+	}
+
+  .group-nav {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw; /* Equivale a 100% da largura da tela*/
+		height: 100vh; /* Equivale a 100% da altura da tela*/
+		background: #3f0e0e;
+		clip-path: circle(
+			100px at 90% -15%
+		); /* circulo de 100px deixando 90% no eixo x e 15% negativo no eixo y*/
+		transition: 1s ease-out;
+
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: center;
+		gap: 0;
+		pointer-events: none; /* Para o user nao clicar em algo que não está aparecendo na tela*/
+  }
+
+  .group-nav a {
+		font-size: 24px;
+		opacity: 0;
+  }
+
+
+	/* Estilos ativos */
+
+	.navbar.active .group-nav {
+		clip-path: circle(1500px at 90% -15%);
+		pointer-events: all;
+	}
+
+	.navbar.active .group-nav a {
+		opacity: 1;
+	}
+
+	.navbar.active .hamburger {
+		position: fixed;
+		top: 26px;
+		right: 16px;
+		border-top-color: transparent;
+	}
+
+	.navbar.active .hamburger::before {
+		transform: rotate(135deg);
+	}
+
+	.navbar.active .hamburger::after {
+		transform: rotate(-135deg);
+		top: -7px;
+	}
+
+	.nav-btn{
+		background-color: inherit;
+		border: none;
+	}
+
+	.nav-btn a{
+		font-size: 1rem;
+	}
 }

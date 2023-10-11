@@ -1,0 +1,81 @@
+.container {
+	position: relative;
+	padding: 1rem;
+	max-width: 1880px;
+	margin: 0 auto;
+}
+
+.gallery-wrapper {
+	overflow-x: auto; /* Faz a rolagem ficar no elemento div gallery-wrapper que é pai da gallery, ou seja se o gallery for maior a barra de rolagem é exibida*/
+}
+
+.gallery {
+	display: flex;
+	flex-flow: row nowrap;
+	gap: 0.5rem;
+}
+
+.arrow-left3,
+.arrow-left2,
+.arrow-left,
+.arrow-right {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: auto;
+	bottom: 0;
+	font-size: 1rem;
+	line-height: 250px;
+	width: 40px;
+	text-align: center;
+	color: #fff;
+	cursor: pointer;
+	border: none;
+	background: linear-gradient(to left, transparent 0%, rgb(201, 77, 77) 200%);
+	opacity: 0.3;
+	transition: all 200ms ease-in-out;
+}
+
+.arrow-right {
+	left: auto;
+	right: 0;
+	background: linear-gradient(
+		to right,
+		transparent 0%,
+		rgb(201, 77, 77) 200%
+	);
+}
+
+.arrow-left3:hover,
+.arrow-left2:hover,
+.arrow-right:hover,
+.arrow-left:hover {
+	opacity: 1;
+}
+
+.item3,
+.item2,
+.item {
+	height: 15rem;
+	width: auto;
+	flex-shrink: 0; /* Para não diminuir para caber*/
+	opacity: 0.6;
+	transition: all 200ms ease-in-out;
+}
+
+.current-item3,
+.current-item2,
+.current-item {
+	opacity: 1;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.gallery-wrapper::-webkit-scrollbar {
+	display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.gallery-wrapper {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+}
