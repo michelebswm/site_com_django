@@ -32,6 +32,10 @@ a {
 	align-items: center;
 }
 
+.nav-logo img{
+	widows: 145px;
+	height: 40px;
+}
 .nav-btn {
 	padding: 0.1rem 0.4rem;
 	border: 1px solid rgb(255, 0, 0);
