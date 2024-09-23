@@ -1,6 +1,6 @@
 asgiref==3.7.2
 dj-database-url==2.1.0
-Django==4.2.5
+Django==4.2.15
 gunicorn==21.2.0
 packaging==23.2
 Pillow==10.0.1
